@@ -4,64 +4,351 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NX模仿CAD快捷键授权系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
+            background: linear-gradient(135deg, #1a2a6c, #2a3c7f, #4a5fbf);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            line-height: 1.6;
         }
-        .header {
+        
+        header {
             text-align: center;
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .content {
-            margin: 20px 0;
+        
+        .logo {
+            font-size: 50px;
+            color: #00b4ff;
+            margin-bottom: 20px;
         }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00b4ff, #00ffcc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 180, 255, 0.2);
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: #aad3ff;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00b4ff, #0088ff);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 136, 255, 0.6);
+            background: linear-gradient(90deg, #00c8ff, #0099ff);
+        }
+        
+        .btn-qq {
+            background: linear-gradient(90deg, #12b7f5, #0099ff);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: #00ffcc;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00e5ff;
+        }
+        
+        .how-it-works {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            margin: 15px;
+            padding: 25px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00b4ff, #00ffcc);
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
         .contact {
-            background: #e7f3ff;
-            padding: 15px;
-            border-radius: 5px;
+            margin-top: 30px;
+        }
+        
+        .contact a {
+            color: #00e5ff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+        }
+        
+        /* 审核相关信息样式 */
+        .audit-info {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .audit-info h3 {
+            color: #ffc107;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>NX模仿CAD快捷键授权系统</h1>
-        <p>专业的NX软件辅助工具 - 提供CAD风格快捷键体验</p>
-    </div>
-    
-    <div class="content">
-        <h2>产品介绍</h2>
-        <p>这是一个基于微信授权的NX软件外挂工具，为NX软件用户提供CAD风格的快捷键操作体验，提升设计效率。</p>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <h1>NX模仿CAD快捷键授权系统</h1>
+            <p class="tagline">为NX软件提供CAD风格的快捷键操作体验，大幅提升设计效率</p>
+            <div>
+                <a href="#download" class="btn btn-qq">
+                    <i class="fab fa-qq"></i> QQ授权登录使用
+                </a>
+                <a href="#features" class="btn">
+                    <i class="fas fa-play-circle"></i> 立即体验
+                </a>
+            </div>
+        </header>
         
-        <h2>主要功能</h2>
-        <ul>
-            <li>微信一键登录授权</li>
-            <li>用户权限管理</li>
-            <li>CAD风格快捷键操作</li>
-            <li>批量处理功能</li>
-            <li>NX软件功能扩展</li>
-        </ul>
+        <!-- 审核相关信息 -->
+        <div class="audit-info">
+            <h3><i class="fas fa-info-circle"></i> 审核状态说明</h3>
+            <p>本应用基于QQ授权登录，使用GitHub Pages托管（服务器位于美国），符合境外服务器应用审核条件。</p>
+            <p>已提交证明材料至QQ互联审核团队，审核进行中。</p>
+        </div>
+        
+        <section class="features" id="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>效率提升</h3>
+                <p>将CAD的快捷操作习惯带入NX，减少学习成本，提高设计速度高达40%</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-keyboard"></i>
+                </div>
+                <h3>智能快捷键</h3>
+                <p>完全模拟CAD快捷键体系，支持自定义配置，满足个性化需求</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>安全稳定</h3>
+                <p>基于QQ授权系统，数据安全可靠，不收集用户隐私信息</p>
+            </div>
+        </section>
+        
+        <section class="how-it-works">
+            <h2>如何使用</h2>
+            <p>只需简单三步，即可开始高效设计</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>QQ授权登录</h3>
+                    <p>使用QQ扫码或账号密码登录系统</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>安装插件</h3>
+                    <p>下载并安装NX插件，自动配置快捷键</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>开始设计</h3>
+                    <p>启动NX软件，使用熟悉的CAD快捷键进行设计</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="download" style="text-align: center; padding: 50px 20px;">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">立即开始使用</h2>
+            <p style="font-size: 18px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                目前系统处于测试阶段，限时免费使用。请通过QQ授权登录获取使用权限。
+            </p>
+            <a href="#" class="btn btn-qq" style="padding: 18px 50px; font-size: 20px;">
+                <i class="fab fa-qq"></i> 立即通过QQ登录使用
+            </a>
+            <p style="margin-top: 20px; color: #aad3ff;">
+                支持NX 10.0及以上版本
+            </p>
+        </section>
+        
+        <footer>
+            <h3>NX模仿CAD快捷键授权系统</h3>
+            <p>为NX用户提供更高效的设计体验</p>
+            
+            <div class="contact">
+                <p>技术支持与反馈：</p>
+                <p>
+                    <a href="mailto:connect@qq.com"><i class="fas fa-envelope"></i> connect@qq.com</a> | 
+                    <a href="#"><i class="fab fa-qq"></i> QQ联系</a>
+                </p>
+                <p style="margin-top: 20px; font-size: 14px; color: #88aaff;">
+                    当前域名：qinyangliang.github.io | GitHub Pages托管 | 服务器位置：美国
+                </p>
+                <p style="margin-top: 10px; font-size: 14px; color: #88aaff;">
+                    © 2023 NX模仿CAD快捷键授权系统 版权所有
+                </p>
+            </div>
+        </footer>
+    </div>
 
-        <h2>技术特点</h2>
-        <ul>
-            <li>支持NX各版本软件</li>
-            <li>模仿CAD操作习惯</li>
-            <li>安全的微信授权机制</li>
-            <li>实时权限验证</li>
-        </ul>
-    </div>
-    
-    <div class="contact">
-        <h2>联系信息</h2>
-        <p><strong>开发者：</strong>覃杨良</p>
-        <p><strong>邮箱：</strong>qinyangliang@126.com</p>
-        <p><strong>更新时间：</strong>2025年11月11日</p>
-        <p><strong>适用软件：</strong>Siemens NX系列</p>
-    </div>
+    <script>
+        // 简单的交互效果
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('QQ授权登录功能正在审核中，请稍后使用。\n\n审核状态：已提交材料至connect@qq.com');
+                }
+            });
+        });
+        
+        // 滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 显示当前年份
+        document.querySelector('footer p:last-child').textContent = 
+            document.querySelector('footer p:last-child').textContent.replace('2023', new Date().getFullYear());
+    </script>
 </body>
 </html>
