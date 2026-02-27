@@ -3,352 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NX模仿CAD快捷键授权系统</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>NX模仿CAD快捷键插件 - 下载与使用说明</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #2a3c7f, #4a5fbf);
-            color: #fff;
+            background-color: #f5f7fa;
+            color: #333;
             line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
         }
         
         header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .logo {
-            font-size: 50px;
-            color: #00b4ff;
-            margin-bottom: 20px;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
         
         h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, #00b4ff, #00ffcc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 5px 15px rgba(0, 180, 255, 0.2);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
         
-        .tagline {
-            font-size: 20px;
-            color: #aad3ff;
-            margin-bottom: 30px;
+        h2 {
+            color: #2c3e50;
+            margin: 1.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
         }
         
-        .btn {
+        h3 {
+            color: #3498db;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .download-btn {
             display: inline-block;
-            background: linear-gradient(90deg, #00b4ff, #0088ff);
+            background-color: #3498db;
             color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
+            padding: 1rem 2rem;
+            border-radius: 5px;
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: bold;
-            font-size: 18px;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.4);
-            border: none;
-            cursor: pointer;
+            margin: 1rem 0;
+            transition: background-color 0.3s;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 136, 255, 0.6);
-            background: linear-gradient(90deg, #00c8ff, #0099ff);
+        .download-btn:hover {
+            background-color: #2980b9;
         }
         
-        .btn-qq {
-            background: linear-gradient(90deg, #12b7f5, #0099ff);
+        .version-info {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
         
-        .feature-card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .feature-icon {
-            font-size: 50px;
-            color: #00ffcc;
-            margin-bottom: 20px;
-        }
-        
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #00e5ff;
-        }
-        
-        .how-it-works {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 50px;
-            border-radius: 20px;
-            margin: 60px 0;
-            text-align: center;
-        }
-        
-        .steps {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 250px;
-            margin: 15px;
-            padding: 25px;
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #00b4ff, #00ffcc);
-            border-radius: 50%;
-            line-height: 50px;
-            font-weight: bold;
-            font-size: 24px;
-            margin-bottom: 20px;
+        li {
+            margin-bottom: 0.5rem;
         }
         
         footer {
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            margin-top: 2rem;
         }
         
-        .contact {
-            margin-top: 30px;
-        }
-        
-        .contact a {
-            color: #00e5ff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        
-        .contact a:hover {
-            text-decoration: underline;
-        }
-        
+        /* 响应式适配 */
         @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
             h1 {
-                font-size: 32px;
+                font-size: 1.8rem;
             }
-            
-            .tagline {
-                font-size: 18px;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .steps {
-                flex-direction: column;
-            }
-        }
-        
-        /* 审核相关信息样式 */
-        .audit-info {
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 10px;
-        }
-        
-        .audit-info h3 {
-            color: #ffc107;
-            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>NX模仿CAD快捷键插件</h1>
+        <p>高效实用的UG辅助工具 | 免费下载 · 简单易用</p>
+    </header>
+
     <div class="container">
-        <header>
-            <div class="logo">
-                <i class="fas fa-cogs"></i>
-            </div>
-            <h1>NX模仿CAD快捷键授权系统</h1>
-            <p class="tagline">为NX软件提供CAD风格的快捷键操作体验，大幅提升设计效率</p>
-            <div>
-                <a href="#download" class="btn btn-qq">
-                    <i class="fab fa-qq"></i> QQ授权登录使用
-                </a>
-                <a href="#features" class="btn">
-                    <i class="fas fa-play-circle"></i> 立即体验
-                </a>
-            </div>
-        </header>
-        
-        <!-- 审核相关信息 -->
-        <div class="audit-info">
-            <h3><i class="fas fa-info-circle"></i> 审核状态说明</h3>
-            <p>本应用基于QQ授权登录，使用GitHub Pages托管（服务器位于美国），符合境外服务器应用审核条件。</p>
-            <p>已提交证明材料至QQ互联审核团队，审核进行中。</p>
+        <!-- 插件介绍 -->
+        <div class="card">
+            <h2>插件介绍</h2>
+            <p>本插件专为UG（Unigraphics NX）设计开发，旨在提升设计效率、简化重复操作、优化建模流程。适用于UG NX 10.0及以上版本，完全免费使用。</p>
+            <h3>核心功能</h3>
+            <ul>
+                <li>快速建模：一键生成常用特征，减少手动操作</li>
+                <li>批量处理：支持批量修改、导出、格式转换</li>
+                <li>参数优化：智能调整模型参数，提升设计精度</li>
+                <li>自定义快捷键：可根据习惯配置操作快捷键</li>
+            </ul>
         </div>
-        
-        <section class="features" id="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3>效率提升</h3>
-                <p>将CAD的快捷操作习惯带入NX，减少学习成本，提高设计速度高达40%</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-keyboard"></i>
-                </div>
-                <h3>智能快捷键</h3>
-                <p>完全模拟CAD快捷键体系，支持自定义配置，满足个性化需求</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>安全稳定</h3>
-                <p>基于QQ授权系统，数据安全可靠，不收集用户隐私信息</p>
-            </div>
-        </section>
-        
-        <section class="how-it-works">
-            <h2>如何使用</h2>
-            <p>只需简单三步，即可开始高效设计</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>QQ授权登录</h3>
-                    <p>使用QQ扫码或账号密码登录系统</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>安装插件</h3>
-                    <p>下载并安装NX插件，自动配置快捷键</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>开始设计</h3>
-                    <p>启动NX软件，使用熟悉的CAD快捷键进行设计</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="download" style="text-align: center; padding: 50px 20px;">
-            <h2 style="font-size: 36px; margin-bottom: 20px;">立即开始使用</h2>
-            <p style="font-size: 18px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                目前系统处于测试阶段，限时免费使用。请通过QQ授权登录获取使用权限。
-            </p>
-            <a href="#" class="btn btn-qq" style="padding: 18px 50px; font-size: 20px;">
-                <i class="fab fa-qq"></i> 立即通过QQ登录使用
-            </a>
-            <p style="margin-top: 20px; color: #aad3ff;">
-                支持NX 10.0及以上版本
-            </p>
-        </section>
-        
-        <footer>
-            <h3>NX模仿CAD快捷键授权系统</h3>
-            <p>为NX用户提供更高效的设计体验</p>
-            
-            <div class="contact">
-                <p>技术支持与反馈：</p>
-                <p>
-                    <a href="mailto:connect@qq.com"><i class="fas fa-envelope"></i> connect@qq.com</a> | 
-                    <a href="#"><i class="fab fa-qq"></i> QQ联系</a>
-                </p>
-                <p style="margin-top: 20px; font-size: 14px; color: #88aaff;">
-                    当前域名：qinyangliang.github.io | GitHub Pages托管 | 服务器位置：美国
-                </p>
-                <p style="margin-top: 10px; font-size: 14px; color: #88aaff;">
-                    © 2023 NX模仿CAD快捷键授权系统 版权所有
-                </p>
-            </div>
-        </footer>
+
+        <!-- 下载区域 -->
+        <div class="card">
+            <h2>下载插件</h2>
+            <div class="version-info">当前版本：v1.0.0 | 更新日期：2026-02-25 | 适配UG版本：NX10.0+</div>
+            <a href="./ug-plugin-v1.0.0.zip" class="download-btn">📥 立即下载插件</a>
+            <p><strong>文件大小：</strong>5.2MB | <strong>文件格式：</strong>ZIP压缩包</p>
+            <p><strong>温馨提示：</strong>下载后请先解压，建议保存到非中文路径下。</p>
+        </div>
+
+        <!-- 安装步骤 -->
+        <div class="card">
+            <h2>安装步骤</h2>
+            <ol>
+                <li>关闭所有正在运行的UG软件，确保UG完全退出。</li>
+                <li>解压下载的插件压缩包，得到 <code>QY_UG_Plugin.dll</code> 和安装说明文件。</li>
+                <li>将 <code>QY_UG_Plugin.dll</code> 复制到UG的插件目录（示例：<code>D:\Program Files\Siemens\NX 12.0\UGII\plugins</code>）。</li>
+                <li>打开UG软件，在菜单栏中找到「工具」→「自定义」→「插件」。</li>
+                <li>勾选「QY_UG_Plugin」，点击确定，重启UG即可生效。</li>
+            </ol>
+            <h3>常见问题</h3>
+            <ul>
+                <li><strong>插件加载失败？</strong> 检查UG版本是否匹配，确保以管理员身份运行UG。</li>
+                <li><strong>找不到插件目录？</strong> 在UG中执行 <code>UGII_ROOT_DIR</code> 环境变量可查看安装路径。</li>
+                <li><strong>杀毒软件误报？</strong> 本插件为开源开发，无任何恶意代码，可添加信任。</li>
+            </ul>
+        </div>
+
+        <!-- 使用说明 -->
+        <div class="card">
+            <h2>使用说明</h2>
+            <h3>基本操作</h3>
+            <ul>
+                <li>安装完成后，UG菜单栏会新增「秦阳亮插件」选项卡。</li>
+                <li>点击对应功能按钮即可执行相应操作，部分功能支持快捷键（默认：Alt+Q）。</li>
+                <li>首次使用建议先阅读插件内的「帮助文档」，了解各功能详细用法。</li>
+            </ul>
+            <h3>功能示例</h3>
+            <p>以「快速倒角」功能为例：</p>
+            <ol>
+                <li>选中需要倒角的边或面；</li>
+                <li>点击「快速倒角」按钮；</li>
+                <li>输入倒角尺寸，点击确定即可完成批量倒角。</li>
+            </ol>
+        </div>
+
+        <!-- 更新日志 -->
+        <div class="card">
+            <h2>更新日志</h2>
+            <h3>v1.0.0 (2026-02-25)</h3>
+            <ul>
+                <li>首次发布，包含基础建模和批量处理功能；</li>
+                <li>支持UG NX10.0/11.0/12.0/1847版本；</li>
+                <li>优化插件加载速度，减少内存占用。</li>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        // 简单的交互效果
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                    alert('QQ授权登录功能正在审核中，请稍后使用。\n\n审核状态：已提交材料至connect@qq.com');
-                }
-            });
-        });
-        
-        // 滚动效果
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // 显示当前年份
-        document.querySelector('footer p:last-child').textContent = 
-            document.querySelector('footer p:last-child').textContent.replace('2023', new Date().getFullYear());
-    </script>
+    <footer>
+        <p>© 2026 秦阳亮 UG插件 | 本站由 GitHub Pages 提供支持</p>
+        <p>如有问题，请留言反馈 | 插件持续更新中...</p>
+    </footer>
 </body>
 </html>
