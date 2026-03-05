@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <link rel="shortcut icon" type="image/x-icon" href="./qin.ico" media="screen" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NX模仿CAD快捷键插件 - 下载与使用说明</title>
+    <meta name="keywords" content="NX插件,UG插件,CAD快捷键,UG快捷键,NX模仿CAD,UG免费插件">
+    <meta name="description" content="NX模仿CAD快捷键插件，支持多键组合、图层控制、显示隐藏，UG NX10.0/12.0/1847通用，下载后可免费使用。">
+    <meta name="author" content="老覃">
     <style>
         * {
             margin: 0;
@@ -15,15 +19,15 @@
         body {
             background-color: #f5f7fa;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
         .container {
@@ -34,169 +38,307 @@
         
         .card {
             background: white;
-            border-radius: 8px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
         
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
         }
         
         h2 {
             color: #2c3e50;
-            margin: 1.5rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #3498db;
+            margin: 0 0 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #3498db;
+            font-weight: 600;
         }
         
         h3 {
             color: #3498db;
-            margin: 1rem 0 0.5rem;
+            margin: 1.2rem 0 0.8rem;
+            font-weight: 500;
         }
         
         p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
         }
         
         .download-btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            transition: background-color 0.3s;
-        }
+  display: inline-flex; /* 弹性布局，方便调整图标位置 */
+  align-items: center;  /* 文字和图标垂直居中 */
+  justify-content: center; /* 内容整体居中 */
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
         
         .download-btn:hover {
-            background-color: #2980b9;
+            background: linear-gradient(135deg, #2980b9 0%, #1f618d 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
         }
         
         .version-info {
             color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            display: inline-block;
         }
         
         ul, ol {
             margin-left: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
         }
         
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* 截图样式 */
+        .step-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1.5rem 0;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* 打赏板块美化 */
+        .reward-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fdf2e9 0%, #fef7e5 100%);
+            border-radius: 10px;
+            border: 1px solid #f0d9c5;
+            text-align: center;
         }
         
+        .reward-title {
+            color: #e67e22;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .reward-title i {
+            font-style: normal;
+            font-size: 1.5rem;
+        }
+        
+        .reward-desc {
+            color: #8d6e63;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .pay-box {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .pay-item {
+            text-align: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+        
+        .pay-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .pay-img {
+            width: 190px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin-bottom: 0.8rem;
+        }
+        
+        .pay-text {
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             color: #7f8c8d;
             border-top: 1px solid #eee;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            background-color: white;
+            border-radius: 8px 8px 0 0;
         }
         
-        /* 响应式适配 */
+        /* 响应式适配优化 */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .card {
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
+            .container { padding: 1rem; }
+            .card { padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .download-btn { padding: 1rem 2rem; font-size: 1.1rem; }
+            .pay-img { width: 150px; }
+            .pay-box { gap: 1.5rem; }
+            .reward-section { padding: 1.5rem; }
+        }
+
+        /* 代码样式优化 */
+        code {
+            background-color: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #e74c3c;
+            font-family: Consolas, monospace;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>NX模仿CAD快捷键插件</h1>
-        <p>高效实用的UG辅助工具 | 免费下载 · 简单易用</p>
-    </header>
+<header>
+    <h1>NX模仿CAD快捷键插件</h1>
+    <p>高效实用的UG辅助工具 | 免费下载 · 简单易用</p>
+</header>
 
-    <div class="container">
-        <!-- 插件介绍 -->
-        <div class="card">
-            <h2>插件介绍</h2>
-            <p>本插件专为UG（Unigraphics NX）设计开发，旨在提升设计效率、简化重复操作、优化建模流程。适用于UG NX 10.0及以上版本，完全免费使用。</p>
-            <h3>核心功能</h3>
-            <ul>
-                <li>快速建模：一键生成常用特征，减少手动操作</li>
-                <li>批量处理：支持批量修改、导出、格式转换</li>
-                <li>参数优化：智能调整模型参数，提升设计精度</li>
-                <li>自定义快捷键：可根据习惯配置操作快捷键</li>
-            </ul>
-        </div>
+<div class="container">
+    <!-- 插件介绍 -->
+    <div class="card">
+        <h2>插件介绍</h2>
+        <p>本插件专为UG（Unigraphics NX）设计软件开发，模仿AutoCAD快捷键逻辑实现多按键组合使用：例如根据个人习惯按下数字10打开10图层（需配合图层插件）、按下AA全部显示、按下SS反转显示和隐藏等。</p>
+        <p>插件旨在充分利用左手附近的按键，大幅提升设计效率，适配UG NX 10.0、UG NX 12.0及以上部分版本，完全免费使用，但需每半年重新下载强制更新。</p>
+    </div>
 
-        <!-- 下载区域 -->
-        <div class="card">
-            <h2>下载插件</h2>
-            <div class="version-info">当前版本：v1.0.0 | 更新日期：2026-02-25 | 适配UG版本：NX10.0+</div>
-            <a href="./NX模仿CAD快捷键.zip" class="download-btn">📥 立即下载插件</a>
-            <p><strong>文件大小：</strong>5.2MB | <strong>文件格式：</strong>ZIP压缩包</p>
-            <p><strong>温馨提示：</strong>下载后请先解压，建议保存到非中文路径下。</p>
-        </div>
+    <!-- 下载插件 + 打赏板块（核心区） -->
+    <div class="card">
+        <h2>插件下载 & 许可更新</h2>
+        <div class="version-info">当前版本：v1.0.0 | 适配：NX10.0~NX2212 | 免费使用</div>
+    
+        <a href="./NX模仿CAD快捷键.zip" class="download-btn" style="background:#27ae60;"margin-top:10px;">📥 下载完整插件包</a>
+        <a href="./nx_cad_shortcut.nxkey" class="download-btn" style="background:#27ae60;" margin-left:10px;">🔑 下载最新许可文件</a>
+    
+        <p style="margin-top:15px;"><strong>文件说明：</strong></p>
+        <ul style="line-height:1.4; margin-left:1.4rem;">
+            <li><strong>完整插件包</strong>：首次使用请下载，内含安装文件、环境变量配置</li>
+            <li><strong>许可文件（.nxkey）</strong>：插件半年过期后，只需下载此文件更新即可</li>
+        </ul>
+    
+        <div style="margin:1.2rem 0; padding:1rem; background:#e8f4fd; border-left:4px #3498db solid; border-radius:6px;">
+            <p style="margin:0; font-size:1rem;"><strong>🔒 许可机制说明</strong><br>
+            • 插件免费使用，为保护原创，采用许可文件验证<br>
+            • 许可有效期半年，到期只需<strong>重新下载最新许可文件覆盖</strong>即可继续使用<br>
+            • 无需注册、无需登录、无需联网，纯本地使用</p>
 
-        <!-- 安装步骤 -->
-        <div class="card">
-            <h2>安装步骤</h2>
-            <ol>
-                <li>关闭所有正在运行的UG软件，确保UG完全退出。</li>
-                <li>解压下载的插件压缩包，得到 <code>QY_UG_Plugin.dll</code> 和安装说明文件。</li>
-                <li>将 <code>QY_UG_Plugin.dll</code> 复制到UG的插件目录（示例：<code>D:\Program Files\Siemens\NX 12.0\UGII\plugins</code>）。</li>
-                <li>打开UG软件，在菜单栏中找到「工具」→「自定义」→「插件」。</li>
-                <li>勾选「QY_UG_Plugin」，点击确定，重启UG即可生效。</li>
-            </ol>
-            <h3>常见问题</h3>
-            <ul>
-                <li><strong>插件加载失败？</strong> 检查UG版本是否匹配，确保以管理员身份运行UG。</li>
-                <li><strong>找不到插件目录？</strong> 在UG中执行 <code>UGII_ROOT_DIR</code> 环境变量可查看安装路径。</li>
-                <li><strong>杀毒软件误报？</strong> 本插件为开源开发，无任何恶意代码，可添加信任。</li>
-            </ul>
-        </div>
-
-        <!-- 使用说明 -->
-        <div class="card">
-            <h2>使用说明</h2>
-            <h3>基本操作</h3>
-            <ul>
-                <li>安装完成后，UG菜单栏会新增「秦阳亮插件」选项卡。</li>
-                <li>点击对应功能按钮即可执行相应操作，部分功能支持快捷键（默认：Alt+Q）。</li>
-                <li>首次使用建议先阅读插件内的「帮助文档」，了解各功能详细用法。</li>
-            </ul>
-            <h3>功能示例</h3>
-            <p>以「快速倒角」功能为例：</p>
-            <ol>
-                <li>选中需要倒角的边或面；</li>
-                <li>点击「快速倒角」按钮；</li>
-                <li>输入倒角尺寸，点击确定即可完成批量倒角。</li>
-            </ol>
-        </div>
-
-        <!-- 更新日志 -->
-        <div class="card">
-            <h2>更新日志</h2>
-            <h3>v1.0.0 (2026-02-25)</h3>
-            <ul>
-                <li>首次发布，包含基础建模和批量处理功能；</li>
-                <li>支持UG NX10.0/11.0/12.0/1847版本；</li>
-                <li>优化插件加载速度，减少内存占用。</li>
-            </ul>
+        <!-- 美化后的打赏板块 -->
+        <div class="reward-section">
+            <div class="reward-title">
+                <i>❤️</i> 支持作者 · 助力插件维护
+            </div>
+            <p class="reward-desc">如果这款【NX模仿CAD快捷键插件】帮你提升了工作效率，欢迎随意打赏（金额不限），所有打赏将用于插件的持续维护、更新和功能优化，感谢你的支持～</p>
+            <div class="pay-box">
+                <div class="pay-item">
+                    <img src="./wechat.png" alt="微信收款码" class="pay-img">
+                    <p style="font-size:0.9rem; color:#999; margin-top:0.5rem;">打赏时备注：助力模仿CAD快捷键插件</p>
+                    <p class="pay-text">微信打赏</p>
+                </div>
+                <div class="pay-item">
+                    <img src="./alipay.png" alt="支付宝收款码" class="pay-img">
+                    <p style="font-size:0.9rem; color:#999; margin-top:0.5rem;">打赏时备注：助力NX模仿CAD快捷键插件</p>
+                    <p class="pay-text">支付宝打赏</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 NX模仿CAD快捷键插件 | 本站由 GitHub Pages 提供支持</p>
-        <p>如有问题，请留言反馈 | 插件持续更新中...</p>
-    </footer>
+    <!-- 安装步骤 -->
+    <div class="card">
+        <h2>安装步骤</h2>
+        <ol>
+            <li>将NX模仿CAD快捷键文件夹下的Cadshortcutskey文件夹复制到D盘根目录下。
+                <img src="./安装步骤1.png" alt="步骤1：复制Cadshortcutskey文件夹到D盘" class="step-img">
+            </li>
+            <li>添加系统环境变量：变量名 <code>CADKEY_DIR</code>，变量值 <code>D:\Cadshortcutskey</code>。
+                <img src="./安装步骤2.png" alt="步骤2：添加CADKEY_DIR环境变量" class="step-img">
+            </li>
+            <li>添加环境变量 <code>UGII_USER_DIR</code>，值设为 <code>D:\Cadshortcutskey</code>；若该环境变量已被占用，需在 <code>D:\Program Files\Siemens\NX 12.0\UGII\menus\custom_dirs.dat</code>（按自身安装版本调整路径）最后一行添加 <code>D:\Cadshortcutskey</code>。
+                <img src="./安装步骤3.png" alt="步骤3：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+                <img src="./安装步骤4.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+            </li>
+        </ol>
+        <h3>常见问题</h3>
+        <ul>
+            <li><strong>出现宏不同步的提示框</strong> 检查配置文件第一个等号后的那个命令和ID那列的命令是否完全一致。</li>
+            <li style="margin-bottom:0.1rem; line-height:1.4;">
+                <strong>提示打开快捷键.ini文件时失败</strong>：环境变量没有添加完全，需要添加两个环境变量：<br>
+                &nbsp;&nbsp;• CADKEY_DIR 值 D:\Cadshortcutskey<br>
+                &nbsp;&nbsp;• UGII_USER_DIR 值 D:\Cadshortcutskey<br>
+                &nbsp;&nbsp;• 如果 UGII_USER_DIR 已被占用，就在  
+                D:\Program Files\Siemens\NX12.0\UGII\menus\custom_dirs.dat  
+                最后一行加上 D:\Cadshortcutskey。
+              </li>
+        </ul>
+    </div>
+
+    <!-- 使用说明 -->
+    <div class="card">
+        <h2>使用说明</h2>
+        <h3>基本操作</h3>
+        <ul>
+            <li>安装完成后，UG菜单栏「窗口」左侧会新增「仿cad快捷键」选项卡，包含打开快捷键、关闭快捷键、定义快捷键三个功能工具。</li>
+            <img src="./安装步骤5.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+            <li>输入快捷键时，内容会显示在NX提示行与状态行中间，输入错误可按退格键或Esc键退回重新输入。</li>
+            <img src="./安装步骤6.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+            <li>输入正确快捷键后按空格键执行对应功能，再次按空格键可重复上一次命令。</li>
+            <li>快捷键ID可从UG「定制键盘」对话框获取并填入快捷键设置对话框，也可点击「打开配置文件」直接编辑 <code>button_id.ini</code> 文件定义快捷键，保存后生效。</li>
+            <img src="./安装步骤7.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+
+        </ul>
+    </div>
+
+    <!-- 更新日志 -->
+    <div class="card">
+        <h2>更新日志</h2>
+        <h3>v1.0.0 (2026-02-25)</h3>
+        <ul>
+            <li>首次发布，支持UG NX10.0/11.0/12.0/1847/2212版本；</li>
+            <li>如有问题可加QQ反馈：1242958854 | 制作者：老覃 | 插件持续更新中...</li>
+        </ul>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 NX模仿CAD快捷键插件 | 本站由 GitHub Pages 提供支持</p>
+</footer>
 </body>
 </html>
