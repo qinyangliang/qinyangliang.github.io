@@ -236,28 +236,30 @@
     <!-- 插件介绍 -->
     <div class="card">
         <h2>插件介绍</h2>
-        <p>本插件专为UG（Unigraphics NX）设计软件开发，模仿AutoCAD快捷键逻辑实现多按键组合使用：例如根据个人习惯按下数字10打开10图层（需配合图层插件）、按下AA全部显示、按下SS反转显示和隐藏等。</p>
-        <p>插件旨在充分利用左手附近的按键，大幅提升设计效率，适配UG NX 10.0、UG NX 12.0及以上部分版本，完全免费使用，但需每半年重新下载强制更新。</p>
+        <p>本插件专为UG（Unigraphics NX）设计软件开发，模仿AutoCAD快捷键逻辑实现多按键组合使用：例如根据个人习惯按下AA全部显示、按下SS反转显示和隐藏等。</p>
+        <p>插件旨在充分利用左手附近的按键，大幅提升设计效率，适配UG NX 10.0、UG NX 12.0及以上版本，完全免费使用，但需每半年重新下载强制更新。</p>
     </div>
 
     <!-- 下载插件 + 打赏板块（核心区） -->
     <div class="card">
         <h2>插件下载 & 许可更新</h2>
-        <div class="version-info">当前版本：v1.0.0 | 适配：NX10.0~NX2212 | 免费使用</div>
+        <div class="version-info">当前版本：v1.0.0 | 适配：NX10.0以上 | 免费使用</div>
     
         <a href="./NX模仿CAD快捷键.zip" class="download-btn" style="background:#27ae60;"margin-top:10px;">📥 下载完整插件包</a>
         <a href="./nx_cad_shortcut.nxkey" class="download-btn" style="background:#27ae60;" margin-left:10px;">🔑 下载最新许可文件</a>
     
         <p style="margin-top:15px;"><strong>文件说明：</strong></p>
         <ul style="line-height:1.4; margin-left:1.4rem;">
-            <li><strong>完整插件包</strong>：首次使用请下载，内含安装文件、环境变量配置</li>
+            <li><strong>完整插件包</strong>：首次使用请下载，内含安装文件、自动安装批处理脚本install.bat</li>
             <li><strong>许可文件（.nxkey）</strong>：插件半年过期后，只需下载此文件更新即可</li>
         </ul>
     
         <div style="margin:1.2rem 0; padding:1rem; background:#e8f4fd; border-left:4px #3498db solid; border-radius:6px;">
-            <p style="margin:0; font-size:1rem;"><strong>🔒 许可机制说明</strong><br>
-            • 插件免费使用，为保护原创，采用许可文件验证<br>
-            • 许可有效期半年，到期只需<strong>重新下载最新许可文件覆盖</strong>即可继续使用<br>
+            <p style="margin:0; font-size:1rem;">
+            <p><strong>温馨提示：</strong>下载后建议关掉杀毒软件再解压以防误杀，本插件为合规开发，无任何恶意代码，可添加信任，放心使用。</p>
+                <strong>🔒 许可机制说明</strong><br>
+            • 插件免费使用，为保护原创，采用许可文件验证。<br>
+            • 许可有效期半年，每年6月1和12月1前更新，到期只需<strong>重新下载最新许可文件覆盖</strong>即可继续使用<br>
             • 无需注册、无需登录、无需联网，纯本地使用</p>
 
         <!-- 美化后的打赏板块 -->
@@ -283,7 +285,12 @@
 
     <!-- 安装步骤 -->
     <div class="card">
-        <h2>安装步骤</h2>
+        <h2>自动安装</h2>
+        <ol>
+            双击文件夹Cadshortcutskey下install.bat，成功后重启电脑。  
+        </ol>
+        <h2>手动安装步骤</h2>
+      
         <ol>
             <li>将NX模仿CAD快捷键文件夹下的Cadshortcutskey文件夹复制到D盘根目录下。
                 <img src="./安装步骤1.png" alt="步骤1：复制Cadshortcutskey文件夹到D盘" class="step-img">
@@ -298,6 +305,7 @@
         </ol>
         <h3>常见问题</h3>
         <ul>
+            <li><strong>杀毒软件误杀？</strong> </li>
             <li><strong>出现宏不同步的提示框</strong> 检查配置文件第一个等号后的那个命令和ID那列的命令是否完全一致。</li>
             <li style="margin-bottom:0.1rem; line-height:1.4;">
                 <strong>提示打开快捷键.ini文件时失败</strong>：环境变量没有添加完全，需要添加两个环境变量：<br>
@@ -331,7 +339,7 @@
         <h2>更新日志</h2>
         <h3>v1.0.0 (2026-02-25)</h3>
         <ul>
-            <li>首次发布，支持UG NX10.0/11.0/12.0/1847/2212版本；</li>
+            <li>首次发布，支持UG NX10.0以上版本；</li>
             <li>如有问题可加QQ反馈：1242958854 | 制作者：老覃 | 插件持续更新中...</li>
         </ul>
     </div>
