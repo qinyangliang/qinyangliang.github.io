@@ -8,7 +8,7 @@
     <meta name="keywords" content="NX插件,UG插件,CAD快捷键,UG快捷键,NX模仿CAD,UG免费插件">
     <meta name="description" content="NX模仿CAD快捷键插件，支持多键组合、图层控制、显示隐藏，UG NX10.0/12.0/1847通用，下载后可免费使用。">
     <meta name="author" content="老覃">
-    <!-- 引入不蒜子统计（仅页面总访问量，用户可见） -->
+    <!-- 仅保留页面总访问量统计 -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <style>
         * {
@@ -77,9 +77,9 @@
         }
         
         .download-btn {
-            display: inline-flex; /* 弹性布局，方便调整图标位置 */
-            align-items: center;  /* 文字和图标垂直居中 */
-            justify-content: center; /* 内容整体居中 */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 12px 24px;
             border-radius: 4px;
             font-size: 16px;
@@ -89,6 +89,7 @@
             border: none;
             cursor: pointer;
             margin-right: 10px;
+            margin-bottom: 10px;
             background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
             box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
             transition: all 0.3s ease;
@@ -120,7 +121,6 @@
             margin-bottom: 0.8rem;
         }
 
-        /* 截图样式 */
         .step-img {
             display: block;
             max-width: 100%;
@@ -131,7 +131,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* 打赏板块美化 */
         .reward-section {
             margin-top: 2rem;
             padding: 2rem;
@@ -200,11 +199,6 @@
             font-size: 1rem;
         }
 
-        /* 统计数字隐藏（用户不可见） */
-        .count-text {
-            display: none !important;
-        }
-
         .total-visit {
             margin-top: 1rem;
             color: #7f8c8d;
@@ -221,19 +215,23 @@
             border-radius: 8px 8px 0 0;
         }
         
-        /* 响应式适配优化 */
         @media (max-width: 768px) {
             .container { padding: 1rem; }
             .card { padding: 1.5rem; }
             h1 { font-size: 2rem; }
             h2 { font-size: 1.5rem; }
-            .download-btn { padding: 1rem 2rem; font-size: 1.1rem; }
+            .download-btn { 
+                padding: 1rem 2rem; 
+                font-size: 1.1rem; 
+                display: block;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
             .pay-img { width: 150px; }
             .pay-box { gap: 1.5rem; }
             .reward-section { padding: 1.5rem; }
         }
 
-        /* 代码样式优化 */
         code {
             background-color: #f8f9fa;
             padding: 0.2rem 0.4rem;
@@ -250,29 +248,26 @@
 </header>
 
 <div class="container">
-    <!-- 插件介绍 -->
     <div class="card">
         <h2>插件介绍</h2>
         <p>本插件专为UG（Unigraphics NX）设计软件开发，模仿AutoCAD快捷键逻辑实现多按键组合使用：例如根据个人习惯按下AA执行UG全部显示的命令、按下SS执行UG反转显示和隐藏的命令等。</p>
         <p>插件旨在充分利用左手附近的按键，大幅提升设计效率，适配系统Win10 UG NX 10.0、 NX 12.0及以上版本，完全免费使用，但需每半年重新下载许可文件强制更新。</p>
     </div>
 
-    <!-- 下载插件 + 打赏板块（核心区） -->
     <div class="card">
         <h2>插件下载 & 许可更新</h2>
         <div class="version-info">当前版本：v1.0.0 | 适配：NX10.0以上 | 免费使用</div>
     
-        <!-- 下载按钮 + 全局统计埋点（用户看不到次数） -->
-        <a href="./NX模仿CAD快捷键.zip" class="download-btn" onclick="downloadHit('plugin_zip')">📥 下载完整插件包</a>
-        <span class="count-text">下载次数：<span id="plugin_zip_count">0</span> 次</span>
+        <!-- 安装包：普通文件下载方式（无自动统计，保留原文件名） -->
+        <a href="./NX模仿CAD快捷键.zip" class="download-btn">📥 下载完整插件包</a>
         
-        <a href="./nx_cad_shortcut.nxkey" class="download-btn" style="margin-left:10px;" onclick="downloadHit('license_key')">🔑 下载最新许可文件</a>
-        <span class="count-text">下载次数：<span id="license_key_count">0</span> 次</span>
+        <!-- 许可文件：Releases下载方式（保留原文件名，需替换为你GitHub生成的编码链接） -->
+        <a href="https://github.com/qinyangliang/qinyangliang.github.io/releases/download/v1.0.0/nx_cad_shortcut.nxkey" class="download-btn">🔑 下载最新许可文件</a>
     
         <p style="margin-top:15px;"><strong>文件说明：</strong></p>
         <ul style="line-height:1.4; margin-left:1.4rem;">
             <li><strong>完整插件包</strong>：首次使用请下载，内含安装文件、自动安装批处理脚本install.bat。</li>
-            <li><strong>许可文件（.nxkey）</strong>：插件半年过期后，只需下载此文件更新即可。</li>
+            <li><strong>许可文件（.nxkey）</strong>：插件半年过期后，只需下载此文件更新即可，下载次数可在GitHub Releases中查看。</li>
         </ul>
     
         <div style="margin:1.2rem 0; padding:1rem; background:#e8f4fd; border-left:4px #3498db solid; border-radius:6px;">
@@ -285,7 +280,6 @@
             </p>
         </div>
 
-        <!-- 美化后的打赏板块（隐藏收款码查看次数） -->
         <div class="reward-section">
             <div class="reward-title">
                 <i>❤️</i> 支持作者 · 助力插件维护
@@ -293,24 +287,19 @@
             <p class="reward-desc">如果这款【NX模仿CAD快捷键插件】帮你提升了工作效率，欢迎随意打赏（金额不限），所有打赏将用于插件的持续维护、更新和功能优化，感谢你的支持～</p>
             <div class="pay-box">
                 <div class="pay-item">
-                    <!-- 收款码 + 懒加载（隐藏查看次数） -->
                     <img src="./wechat.webp" alt="微信收款码" class="pay-img" loading="lazy">
                     <p style="font-size:0.9rem; color:#999; margin-top:0.5rem;">打赏时备注：助力模仿CAD快捷键插件</p>
                     <p class="pay-text">微信打赏</p>
-                    <span class="count-text">查看次数：<span id="wechat_qrcode_count">0</span> 次</span>
                 </div>
                 <div class="pay-item">
-                    <!-- 收款码 + 懒加载（隐藏查看次数） -->
                     <img src="./alipay.webp" alt="支付宝收款码" class="pay-img" loading="lazy">
                     <p style="font-size:0.9rem; color:#999; margin-top:0.5rem;">打赏时备注：助力NX模仿CAD快捷键插件</p>
                     <p class="pay-text">支付宝打赏</p>
-                    <span class="count-text">查看次数：<span id="alipay_qrcode_count">0</span> 次</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 安装步骤 -->
     <div class="card">
         <h2>自动安装</h2>
         <ol>
@@ -345,7 +334,6 @@
         </ul>
     </div>
 
-    <!-- 使用说明 -->
     <div class="card">
         <h2>使用说明</h2>
         <h3>基本操作</h3>
@@ -360,7 +348,6 @@
         </ul>
     </div>
 
-    <!-- 更新日志 -->
     <div class="card">
         <h2>更新日志</h2>
         <h3>v1.0.0 (2026-02-25)</h3>
@@ -368,7 +355,6 @@
             <li>首次发布，支持UG NX10.0以上版本；</li>
             <li>如有问题可加QQ反馈：1242958854 | 制作者：老覃 | 插件持续更新中...</li>
         </ul>
-        <!-- 页面总访问次数（用户可见，可选） -->
         <div class="total-visit">
             🌟 页面总访问次数：<span id="busuanzi_value_site_pv"></span> 次
         </div>
@@ -378,55 +364,5 @@
 <footer>
     <p>© 2026 NX模仿CAD快捷键插件 | 本站由 GitHub Pages 提供支持</p>
 </footer>
-
-<!-- 核心JS：全局统计（存储到GitHub Issues #1），用户不可见 -->
-<script>
-// 配置（你的仓库和Issue编号）
-const REPO = 'qinyangliang/qinyangliang.github.io';
-const ISSUE_ID = 1; // 你的Issue编号#1
-
-// 获取当前计数（从GitHub Issues读取）
-async function getCount(key) {
-    try {
-        const res = await fetch(`https://api.github.com/repos/${REPO}/issues/${ISSUE_ID}/comments`);
-        const comments = await res.json();
-        // 查找对应key的评论
-        const targetComment = comments.find(comment => comment.body.includes(`[${key}]`));
-        return targetComment ? parseInt(targetComment.body.split(':')[1].trim()) : 0;
-    } catch (e) {
-        console.log('获取计数失败，使用本地备份：', e);
-        return 0;
-    }
-}
-
-// 增加计数（写入GitHub Issues）
-async function addCount(key) {
-    try {
-        const currentCount = await getCount(key);
-        const newCount = currentCount + 1;
-        
-        // 提交新计数到Issue评论
-        await fetch(`https://api.github.com/repos/${REPO}/issues/${ISSUE_ID}/comments`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/vnd.github.v3+json'
-            },
-            body: JSON.stringify({ 
-                body: `[${key}]: ${newCount}` 
-            })
-        });
-        
-        console.log(`✅ ${key} 计数更新为：${newCount}`);
-    } catch (e) {
-        console.error('❌ 计数提交失败：', e);
-    }
-}
-
-// 下载埋点（全局统计）
-function downloadHit(key) {
-    addCount(key); // 仅提交到Issues，不显示在页面
-}
-</script>
 </body>
 </html>
