@@ -8,6 +8,8 @@
     <meta name="keywords" content="NX插件,UG插件,CAD快捷键,UG快捷键,NX模仿CAD,UG免费插件">
     <meta name="description" content="NX模仿CAD快捷键插件，支持多键组合、图层控制、显示隐藏，UG NX10.0/12.0/1847通用，下载后可免费使用。">
     <meta name="author" content="老覃">
+    <!-- 引入不蒜子统计（仅页面总访问量，用户可见） -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <style>
         * {
             margin: 0;
@@ -75,19 +77,22 @@
         }
         
         .download-btn {
-  display: inline-flex; /* 弹性布局，方便调整图标位置 */
-  align-items: center;  /* 文字和图标垂直居中 */
-  justify-content: center; /* 内容整体居中 */
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
-}
+            display: inline-flex; /* 弹性布局，方便调整图标位置 */
+            align-items: center;  /* 文字和图标垂直居中 */
+            justify-content: center; /* 内容整体居中 */
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+            transition: all 0.3s ease;
+        }
         
         .download-btn:hover {
             background: linear-gradient(135deg, #2980b9 0%, #1f618d 100%);
@@ -186,12 +191,24 @@
             border-radius: 8px;
             border: 1px solid #eee;
             margin-bottom: 0.8rem;
+            cursor: pointer;
         }
         
         .pay-text {
             color: #333;
             font-weight: 500;
             font-size: 1rem;
+        }
+
+        /* 统计数字隐藏（用户不可见） */
+        .count-text {
+            display: none !important;
+        }
+
+        .total-visit {
+            margin-top: 1rem;
+            color: #7f8c8d;
+            font-size: 0.95rem;
         }
 
         footer {
@@ -245,8 +262,12 @@
         <h2>插件下载 & 许可更新</h2>
         <div class="version-info">当前版本：v1.0.0 | 适配：NX10.0以上 | 免费使用</div>
     
-        <a href="./NX模仿CAD快捷键.zip" class="download-btn" style="background:#27ae60;"margin-top:10px;">📥 下载完整插件包</a>
-        <a href="./nx_cad_shortcut.nxkey" class="download-btn" style="background:#27ae60;" margin-left:10px;">🔑 下载最新许可文件</a>
+        <!-- 下载按钮 + 全局统计埋点（用户看不到次数） -->
+        <a href="./NX模仿CAD快捷键.zip" class="download-btn" onclick="downloadHit('plugin_zip')">📥 下载完整插件包</a>
+        <span class="count-text">下载次数：<span id="plugin_zip_count">0</span> 次</span>
+        
+        <a href="./nx_cad_shortcut.nxkey" class="download-btn" style="margin-left:10px;" onclick="downloadHit('license_key')">🔑 下载最新许可文件</a>
+        <span class="count-text">下载次数：<span id="license_key_count">0</span> 次</span>
     
         <p style="margin-top:15px;"><strong>文件说明：</strong></p>
         <ul style="line-height:1.4; margin-left:1.4rem;">
@@ -256,13 +277,15 @@
     
         <div style="margin:1.2rem 0; padding:1rem; background:#e8f4fd; border-left:4px #3498db solid; border-radius:6px;">
             <p style="margin:0; font-size:1rem;">
-            <p><strong>温馨提示：</strong>下载后建议关掉杀毒软件再解压以防误杀，本插件为合规开发，无任何恶意代码，可添加信任，放心使用。</p>
+                <strong>温馨提示：</strong>下载后建议关掉杀毒软件再解压以防误杀，本插件为合规开发，无任何恶意代码，可添加信任，放心使用。<br>
                 <strong>🔒 许可机制说明</strong><br>
-            • 插件免费使用，为保护原创，采用许可文件验证。<br>
-            • 许可有效期半年，作者会在每年6月1日和12月1日前更新，到期只需<strong>重新下载最新许可文件覆盖</strong>即可继续使用。<br>
-            • 无需注册、无需登录、无需联网，纯本地使用。</p>
+                • 插件免费使用，为保护原创，采用许可文件验证。<br>
+                • 许可有效期半年，作者会在每年6月1日和12月1日前更新，到期只需<strong>重新下载最新许可文件覆盖</strong>即可继续使用。<br>
+                • 无需注册、无需登录、无需联网，纯本地使用。
+            </p>
+        </div>
 
-        <!-- 美化后的打赏板块 -->
+        <!-- 美化后的打赏板块（隐藏收款码查看次数） -->
         <div class="reward-section">
             <div class="reward-title">
                 <i>❤️</i> 支持作者 · 助力插件维护
@@ -270,14 +293,18 @@
             <p class="reward-desc">如果这款【NX模仿CAD快捷键插件】帮你提升了工作效率，欢迎随意打赏（金额不限），所有打赏将用于插件的持续维护、更新和功能优化，感谢你的支持～</p>
             <div class="pay-box">
                 <div class="pay-item">
-                    <img src="./wechat.png" alt="微信收款码" class="pay-img">
+                    <!-- 收款码 + 懒加载（隐藏查看次数） -->
+                    <img src="./wechat.webp" alt="微信收款码" class="pay-img" loading="lazy">
                     <p style="font-size:0.9rem; color:#999; margin-top:0.5rem;">打赏时备注：助力模仿CAD快捷键插件</p>
                     <p class="pay-text">微信打赏</p>
+                    <span class="count-text">查看次数：<span id="wechat_qrcode_count">0</span> 次</span>
                 </div>
                 <div class="pay-item">
-                    <img src="./alipay.jpg" alt="支付宝收款码" class="pay-img">
+                    <!-- 收款码 + 懒加载（隐藏查看次数） -->
+                    <img src="./alipay.webp" alt="支付宝收款码" class="pay-img" loading="lazy">
                     <p style="font-size:0.9rem; color:#999; margin-top:0.5rem;">打赏时备注：助力NX模仿CAD快捷键插件</p>
                     <p class="pay-text">支付宝打赏</p>
+                    <span class="count-text">查看次数：<span id="alipay_qrcode_count">0</span> 次</span>
                 </div>
             </div>
         </div>
@@ -287,20 +314,20 @@
     <div class="card">
         <h2>自动安装</h2>
         <ol>
-            双击文件夹Cadshortcutskey下install.bat，成功后重启电脑。  
+            <li>双击文件夹Cadshortcutskey下install.bat，成功后重启电脑。</li>
         </ol>
         <h2>手动安装步骤</h2>
       
         <ol>
             <li>将NX模仿CAD快捷键文件夹下的Cadshortcutskey文件夹复制到D盘根目录下。
-                <img src="./安装步骤1.png" alt="步骤1：复制Cadshortcutskey文件夹到D盘" class="step-img">
+                <img src="./安装步骤1.png" alt="步骤1：复制Cadshortcutskey文件夹到D盘" class="step-img" loading="lazy">
             </li>
             <li>添加系统环境变量：变量名 <code>CADKEY_DIR</code>，变量值 <code>D:\Cadshortcutskey</code>。
-                <img src="./安装步骤2.png" alt="步骤2：添加CADKEY_DIR环境变量" class="step-img">
+                <img src="./安装步骤2.png" alt="步骤2：添加CADKEY_DIR环境变量" class="step-img" loading="lazy">
             </li>
             <li>添加环境变量 <code>UGII_USER_DIR</code>，值设为 <code>D:\Cadshortcutskey</code>；若该环境变量已被占用，需在 <code>D:\Program Files\Siemens\NX 12.0\UGII\menus\custom_dirs.dat</code>（按自身安装版本调整路径）最后一行添加 <code>D:\Cadshortcutskey</code>。
-                <img src="./安装步骤3.png" alt="步骤3：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
-                <img src="./安装步骤4.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+                <img src="./安装步骤3.png" alt="步骤3：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img" loading="lazy">
+                <img src="./安装步骤4.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img" loading="lazy">
             </li>
         </ol>
         <h3>常见问题</h3>
@@ -324,13 +351,12 @@
         <h3>基本操作</h3>
         <ul>
             <li>安装完成后，UG菜单栏「窗口」左侧会新增「仿cad快捷键」选项卡，包含打开快捷键、关闭快捷键、定义快捷键三个功能工具。</li>
-            <img src="./安装步骤5.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+            <img src="./安装步骤5.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img" loading="lazy">
             <li>输入快捷键时，内容会显示在NX提示行与状态行中间，输入错误可按退格键或Esc键退回重新输入。</li>
-            <img src="./安装步骤6.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
+            <img src="./安装步骤6.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img" loading="lazy">
             <li>输入正确快捷键后按空格键执行对应功能，再次按空格键可重复上一次命令。</li>
             <li>快捷键ID可从UG「定制键盘」对话框获取并填入快捷键设置对话框，也可点击「打开配置文件」直接编辑 <code>button_id.ini</code> 文件定义快捷键，保存后生效。</li>
-            <img src="./安装步骤7.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img">
-
+            <img src="./安装步骤7.png" alt="步骤4：配置UGII_USER_DIR环境变量或custom_dirs.dat文件" class="step-img" loading="lazy">
         </ul>
     </div>
 
@@ -342,11 +368,65 @@
             <li>首次发布，支持UG NX10.0以上版本；</li>
             <li>如有问题可加QQ反馈：1242958854 | 制作者：老覃 | 插件持续更新中...</li>
         </ul>
+        <!-- 页面总访问次数（用户可见，可选） -->
+        <div class="total-visit">
+            🌟 页面总访问次数：<span id="busuanzi_value_site_pv"></span> 次
+        </div>
     </div>
 </div>
 
 <footer>
     <p>© 2026 NX模仿CAD快捷键插件 | 本站由 GitHub Pages 提供支持</p>
 </footer>
+
+<!-- 核心JS：全局统计（存储到GitHub Issues #1），用户不可见 -->
+<script>
+// 配置（你的仓库和Issue编号）
+const REPO = 'qinyangliang/qinyangliang.github.io';
+const ISSUE_ID = 1; // 你的Issue编号#1
+
+// 获取当前计数（从GitHub Issues读取）
+async function getCount(key) {
+    try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}/issues/${ISSUE_ID}/comments`);
+        const comments = await res.json();
+        // 查找对应key的评论
+        const targetComment = comments.find(comment => comment.body.includes(`[${key}]`));
+        return targetComment ? parseInt(targetComment.body.split(':')[1].trim()) : 0;
+    } catch (e) {
+        console.log('获取计数失败，使用本地备份：', e);
+        return 0;
+    }
+}
+
+// 增加计数（写入GitHub Issues）
+async function addCount(key) {
+    try {
+        const currentCount = await getCount(key);
+        const newCount = currentCount + 1;
+        
+        // 提交新计数到Issue评论
+        await fetch(`https://api.github.com/repos/${REPO}/issues/${ISSUE_ID}/comments`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            body: JSON.stringify({ 
+                body: `[${key}]: ${newCount}` 
+            })
+        });
+        
+        console.log(`✅ ${key} 计数更新为：${newCount}`);
+    } catch (e) {
+        console.error('❌ 计数提交失败：', e);
+    }
+}
+
+// 下载埋点（全局统计）
+function downloadHit(key) {
+    addCount(key); // 仅提交到Issues，不显示在页面
+}
+</script>
 </body>
 </html>
