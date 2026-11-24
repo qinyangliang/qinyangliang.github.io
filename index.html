@@ -255,22 +255,24 @@
     </div>
 
     <div class="card">
-        <h2>插件下载 & 许可更新</h2>
-        <div class="version-info">当前版本：v1.0.0 | 适配：NX6.0以上 | 免费使用</div>
-    
-        <!-- 安装包：普通文件下载方式（无自动统计，保留原文件名） -->
-        <a href="./NX模仿CAD快捷键.zip" class="download-btn">📥 下载完整插件包</a>
-         <!-- 许可文件：Releases下载方式（保留原文件名，需替换为你GitHub生成的编码链接） -->
-        <a href="https://github.com/qinyangliang/qinyangliang.github.io/releases/download/V1.0.1/nx_cad_shortcut.nxkey" class="download-btn">🔑 下载最新许可文件</a>
+<h2>插件下载 & 许可更新</h2>
+<div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:1.5rem;">
+    <div class="version-info" style="margin-bottom:0;">当前版本：v1.0.0 | 适配：NX6.0以上 | 免费使用</div>
+    <a href="./NX模仿CAD快捷键.zip" class="download-btn" style="margin-bottom:0;">📥 下载完整插件包</a>
+    <a href="https://github.com/qinyangliang/qinyangliang.github.io/releases/download/V1.0.1/nx_cad_shortcut.nxkey" class="download-btn" style="margin-bottom:0;">🔑 下载最新许可文件</a>
+</div>
 
-        <!-- 温馨提示单独一行 -->
-        <div class="version-info">温馨提示：优先用下面国内高速下载通道</div>
+<!-- 温馨提示：block 独占一整行，后面不跟任何按钮 -->
+<div class="version-info" style="display:block; width:100%; margin-bottom:1.5rem;">温馨提示：优先用下面国内高速下载通道</div>
 
-        <!-- 插件包：固定走Gitee高速（全部用户都从Gitee下） -->
-        <a href="https://gitee.com/qinyangliang/qinyangliang.github.io/releases/download/V1.0.1/NX模仿CAD快捷键.zip" class="download-btn">📥 下载完整插件包【Gitee国内高速下载通道】</a>       
-        <a href="https://gitee.com/qinyangliang/qinyangliang.github.io/releases/download/V1.0.1/nx_cad_shortcut.nxkey" class="download-btn">🔑 下载最新许可文件【Gitee国内高速下载通道】</a>
+<!-- Gitee 高速通道：两个按钮放进同一个 flex 容器，保证并排一行 -->
+<div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:1.5rem;">
+    <a href="https://gitee.com/qinyangliang/qinyangliang.github.io/releases/download/V1.0.1/NX模仿CAD快捷键.zip" class="download-btn" style="margin-bottom:0;">📥 下载完整插件包【Gitee国内高速下载通道】</a>
+    <a href="https://gitee.com/qinyangliang/qinyangliang.github.io/releases/download/V1.0.1/nx_cad_shortcut.nxkey" class="download-btn" style="margin-bottom:0;">🔑 下载最新许可文件【Gitee国内高速下载通道】</a>
+</div>
 
-        <p style="margin-top:15px;"><strong>文件说明：</strong></p>
+<p style="margin-top:15px;"><strong>文件说明：</strong></p>
+
         <ul style="line-height:1.4; margin-left:1.4rem;">
             <li><strong>完整插件包</strong>：首次使用请下载，内含安装文件、自动安装批处理脚本install.bat。</li>
             <li><strong>许可文件（.nxkey）</strong>：插件半年过期后，只需下载此文件更新即可。</li>
